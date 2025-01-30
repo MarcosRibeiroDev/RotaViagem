@@ -6,8 +6,15 @@ namespace RotaViagem.UI
 {
     class Program
     {
+        static string caminhoArquivo = "rotas.txt";
+
         static void Main(string[] args)
         {
+            if (!File.Exists(caminhoArquivo))
+            {
+                AdicionarRotasIniciais();
+            }
+
             var rotaRepository = new RotaRepository();
             var rotaService = new RotaService(rotaRepository);
             var registrarRotaUseCase = new RegistrarRotaApplication(rotaRepository);
@@ -115,6 +122,32 @@ namespace RotaViagem.UI
 
             Console.WriteLine("Pressione qualquer tecla para continuar.");
             Console.ReadKey();
+        }
+
+        static void AdicionarRotasIniciais()
+        {
+            // Rotas iniciais para adicionar no arquivo
+            string[] rotasIniciais = new string[]
+            {
+            "GRU,BRC,10",
+            "BRC,SCL,5",
+            "GRU,CDG,75",
+            "GRU,SCL,20",
+            "GRU,ORL,56",
+            "ORL,CDG,5",
+            "SCL,ORL,20"
+            };
+
+            // Escrever as rotas iniciais no arquivo
+            try
+            {
+                File.WriteAllLines(caminhoArquivo, rotasIniciais);
+                Console.WriteLine("Rotas iniciais adicionadas ao arquivo.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao adicionar rotas iniciais: {ex.Message}");
+            }
         }
     }
 }
