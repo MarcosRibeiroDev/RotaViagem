@@ -42,7 +42,7 @@ Este projeto é uma aplicação para calcular a melhor rota de viagem entre dois
    - Ponto de origem (ex: GRU)
    - Ponto de destino (ex: CDG)
    - Custo da rota (ex: 40)
-3. A rota será salva no banco de dados.
+3. A rota será salva no arquivo .txt
 
 ### Consultar Melhor Rota
 1. Escolha a opção **2. Consultar melhor rota** no menu principal.
@@ -65,18 +65,18 @@ Melhor Rota: GRU -> BRC -> SCL -> ORL -> CDG ao custo de $40
 ```
 
 ## Estrutura do Projeto
-  ├──RotaViagem.UI/                   # UI
-  │   ├── Program/                      # Interface de linha de comando para interação com o usuário.
-  ├── RotaViagem.Domain/              # Lógica de domínio (Entidades, Serviços, Repositórios)
-  │   ├── Entities/                     # Entidades do domínio (Rota.cs)
-  │   ├── Services/                     # Serviços do domínio (RotaService.cs)
-  │   ├── Repositories/                 # Interfaces de repositórios (IRotaRepository.cs)
-  ├── RotaViagem.Application/         # Casos de uso
-  │   ├── UseCases/                     # Casos de uso (RegistrarRotaApplication.cs, ConsultarMelhorRotaApplication.cs)
-  ├── RotaViagem.Infrastructure/      # Implementações concretas
-  │   ├── Repositories/                 # Implementações do repositório (RotaRepository.cs)
-  ├── RotaViagem.Tests/               # Testes unitários
-  │   ├── RotaServiceTests.cs           # Testes do serviço de rota
+  **RotaViagem.UI**              # UI
+    Program                      # Interface de linha de comando para interação com o usuário.
+  **RotaViagem.Domain**          # Lógica de domínio (Entidades, Serviços, Repositórios)
+     Entities                    # Entidades do domínio (Rota.cs)
+     Services                    # Serviços do domínio (RotaService.cs)
+     Repositories                # Interfaces de repositórios (IRotaRepository.cs)
+  **RotaViagem.Application**     # Casos de uso
+     Application                 # Casos de uso (RegistrarRotaApplication.cs, ConsultarMelhorRotaApplication.cs)
+  **RotaViagem.Infrastructure**  # Implementações concretas
+     Repositories                # Implementações do repositório (RotaRepository.cs)
+  **RotaViagem.Tests**           # Testes unitários
+     RotaServiceTests.cs         # Testes do serviço de rota
   
 ## Explicação das Camadas:
 Core: Contém a lógica de domínio, incluindo entidades como Rota, serviços como RotaService e interfaces de repositório.
