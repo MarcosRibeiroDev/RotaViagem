@@ -126,7 +126,6 @@ namespace RotaViagem.UI
 
         static void AdicionarRotasIniciais()
         {
-            // Rotas iniciais para adicionar no arquivo
             string[] rotasIniciais = new string[]
             {
             "GRU,BRC,10",
@@ -138,7 +137,6 @@ namespace RotaViagem.UI
             "SCL,ORL,20"
             };
 
-            // Escrever as rotas iniciais no arquivo
             try
             {
                 File.WriteAllLines(caminhoArquivo, rotasIniciais);
