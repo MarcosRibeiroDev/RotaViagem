@@ -63,3 +63,38 @@ Ao consultar a melhor rota de **GRU** para **CDG**, o sistema exibiria:
 ```
 Melhor Rota: GRU -> BRC -> SCL -> ORL -> CDG ao custo de $40
 ```
+
+## Estrutura do Projeto
+  ├──RotaViagem.UI/                   # UI
+  │   ├── Program/                      # Interface de linha de comando para interação com o usuário.
+  ├── RotaViagem.Domain/              # Lógica de domínio (Entidades, Serviços, Repositórios)
+  │   ├── Entities/                     # Entidades do domínio (Rota.cs)
+  │   ├── Services/                     # Serviços do domínio (RotaService.cs)
+  │   ├── Repositories/                 # Interfaces de repositórios (IRotaRepository.cs)
+  ├── RotaViagem.Application/         # Casos de uso
+  │   ├── UseCases/                     # Casos de uso (RegistrarRotaApplication.cs, ConsultarMelhorRotaApplication.cs)
+  ├── RotaViagem.Infrastructure/      # Implementações concretas
+  │   ├── Repositories/                 # Implementações do repositório (RotaRepository.cs)
+  ├── RotaViagem.Tests/               # Testes unitários
+  │   ├── RotaServiceTests.cs           # Testes do serviço de rota
+  
+## Explicação das Camadas:
+Core: Contém a lógica de domínio, incluindo entidades como Rota, serviços como RotaService e interfaces de repositório.
+Application: Define os casos de uso, como registrar rotas e consultar a melhor rota.
+Infrastructure: Implementação concreta do repositório, que manipula a persistência de dados (aqui, uma simples lista em memória).
+Tests: Contém testes unitários para garantir que os serviços e a lógica de negócios funcionem corretamente.
+
+## Decisões de Design
+1. Domain-Driven Design (DDD):
+Seguindo o padrão de Domain-Driven Design (DDD), a aplicação foi dividida em camadas:
+Domain contém a lógica de domínio e regras de negócio.
+Application lida com os casos de uso (fluxos da aplicação).
+Infrastructure contém a implementação do repositório.
+Esta separação facilita a manutenção, o teste e a evolução do sistema.
+2. Testes Unitários:
+A aplicação foi projetada para ser facilmente testável. Os testes unitários são isolados e rápidos, utilizando mocks para simular a persistência de dados.
+Os testes foram implementados usando o framework MSTest.
+3. Princípio da Responsabilidade Única (SRP):
+Cada classe e módulo possui uma única responsabilidade. Por exemplo, a classe RotaService lida apenas com a lógica de cálculo da melhor rota, enquanto a classe RotaRepository lida apenas com o armazenamento e recuperação das rotas.
+4. Uso de Repositórios:
+O repositório de rotas segue o princípio da abstração. A interface IRotaRepository permite que o código de domínio (em Domain) não se preocupe com os detalhes de persistência, tornando o sistema flexível e fácil de testar.
