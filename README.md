@@ -10,7 +10,7 @@ Este projeto é uma aplicação para calcular a melhor rota de viagem entre dois
 ### Requisitos
 
 - **.NET SDK**: Este projeto foi desenvolvido com o .NET SDK 8.0.
-- **Editor de código**: Recomendamos o Visual Studio ou Visual Studio Code.
+- **Editor de código**: Recomendamos o Visual Studio.
 
 ### Estrutura de persistência
 **Arquivo TXT**: Está sendo usado um arquivo .txt para persistência de dados. 
