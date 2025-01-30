@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RotaViagem.Application\RotaViagem.Application.csproj" />
+    <ProjectReference Include="..\RotaViagem.Infrastructure\RotaViagem.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
