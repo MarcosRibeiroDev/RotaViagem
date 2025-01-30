@@ -65,21 +65,21 @@ Melhor Rota: GRU -> BRC -> SCL -> ORL -> CDG ao custo de $40
 ```
 
 ## Estrutura do Projeto
-  **RotaViagem.UI**              # UI
-   -  Program                      # Interface de linha de comando para interação com o usuário.
-  **RotaViagem.Domain**          # Lógica de domínio (Entidades, Serviços, Repositórios)
-   -  Entities                    # Entidades do domínio (Rota.cs)
-   -  Services                    # Serviços do domínio (RotaService.cs)
-   -  Repositories                # Interfaces de repositórios (IRotaRepository.cs)
-  **RotaViagem.Application**     # Casos de uso
-   -  Application                 # Casos de uso (RegistrarRotaApplication.cs, ConsultarMelhorRotaApplication.cs)
-  **RotaViagem.Infrastructure**  # Implementações concretas
-   -  Repositories                # Implementações do repositório (RotaRepository.cs)
-  **RotaViagem.Tests**           # Testes unitários
-   -  RotaServiceTests.cs         # Testes do serviço de rota
+  **RotaViagem.UI**              (UI)
+   -  Program                    (Interface de linha de comando para interação com o usuário)
+  **RotaViagem.Domain**          (Lógica de domínio (Entidades, Serviços, Repositórios))
+   -  Entities                   (Entidades do domínio (Rota.cs))
+   -  Services                   (Serviços do domínio (RotaService.cs))
+   -  Repositories               (Interfaces de repositórios (IRotaRepository.cs))
+  **RotaViagem.Application**     (Casos de uso)
+   -  Application                (Casos de uso (RegistrarRotaApplication.cs, ConsultarMelhorRotaApplication.cs))
+  **RotaViagem.Infrastructure**  (Implementações concretas)
+   -  Repositories               (Implementações do repositório (RotaRepository.cs))
+  **RotaViagem.Tests**           (Testes unitários)
+   -  RotaServiceTests.cs        (Testes do serviço de rota)
   
 ## Explicação das Camadas:
-Core: Contém a lógica de domínio, incluindo entidades como Rota, serviços como RotaService e interfaces de repositório.
+Domain: Contém a lógica de domínio, incluindo entidades como Rota, serviços como RotaService e interfaces de repositório.
 Application: Define os casos de uso, como registrar rotas e consultar a melhor rota.
 Infrastructure: Implementação concreta do repositório, que manipula a persistência de dados (aqui, uma simples lista em memória).
 Tests: Contém testes unitários para garantir que os serviços e a lógica de negócios funcionem corretamente.
@@ -98,3 +98,24 @@ Os testes foram implementados usando o framework MSTest.
 Cada classe e módulo possui uma única responsabilidade. Por exemplo, a classe RotaService lida apenas com a lógica de cálculo da melhor rota, enquanto a classe RotaRepository lida apenas com o armazenamento e recuperação das rotas.
 4. Uso de Repositórios:
 O repositório de rotas segue o princípio da abstração. A interface IRotaRepository permite que o código de domínio (em Domain) não se preocupe com os detalhes de persistência, tornando o sistema flexível e fácil de testar.
+
+## Melhorias Futuras (Ideias para outras versões)
+- Implementação de Interface Gráfica (GUI):
+Criar uma interface gráfica para facilitar a interação do usuário com o sistema, permitindo selecionar pontos de origem e destino através de um mapa ou lista de cidades.
+A interface pode ser implementada com tecnologias como Windows Forms, WPF ou Blazor (caso a aplicação seja web-based).
+
+- Integração com Serviços de Mapas para Visualização das Rotas:
+Integrar a aplicação com serviços como Google Maps API ou OpenStreetMap para mostrar as rotas no mapa visualmente, possibilitando a visualização da sequência das cidades e a distância real entre elas.
+Isso também pode permitir a personalização da visualização, como rotas alternativas ou sugestões baseadas em tempo e custo.
+
+- Armazenamento Persistente de Dados:
+Implementar um banco de dados real (como SQL Server ou SQLite) para persistir as rotas e permitir consultas rápidas sem a necessidade de reiniciar a aplicação ou inserir rotas repetidamente.
+
+- Sugestão de Rota Mais Rápida:
+Além do cálculo da rota mais barata, o sistema poderia calcular a rota mais rápida, considerando também o tempo estimado entre as conexões, podendo envolver integrações com dados em tempo real de trânsito ou horários de voos.
+
+- Relatórios e Histórico de Viagens:
+Adicionar uma funcionalidade para salvar e gerar relatórios sobre viagens realizadas, incluindo custo total, tempo de viagem, e rota utilizada, possibilitando consultar o histórico de viagens anteriores.
+
+- Sistema de Recomendação de Rota:
+Utilizar algoritmos de aprendizado de máquina para sugerir rotas baseadas no histórico de viagens do usuário ou em padrões de viagens similares, criando uma experiência mais personalizada.
